@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 1. Define the Phase 2 Palette Variables */
+:root {
+  --background: #FAFAF9; /* Ceramic White */
+  --foreground: #1C1917; /* Charcoal */
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -12,26 +18,28 @@ html {
   scroll-behavior: smooth;
 }
 
+/* 2. Apply the "Human" Base Styles */
 body {
-  background-color: #0a192f;
-  color: #e2e8f0;
-  font-family: var(--font-fira-code), monospace;
+  background-color: var(--background);
+  color: var(--foreground);
+  /* Use Sans-Serif (Inter) for readability, not Monospace */
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif; 
 }
 
-/* Scrollbar styling */
+/* 3. Update Scrollbar to "Earthy" Tones */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a192f;
+  background: #E7E5E4; /* Sand */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #64ffda;
+  background: #2b232334; /* Harvest Gold */
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4ee4c4;
+  background: #0F766E; /* Deep Forest Green */
 }

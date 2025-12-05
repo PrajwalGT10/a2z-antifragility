@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import { Playfair_Display, Fira_Code } from 'next/font/google';
+import { Playfair_Display, Fira_Code, Inter } from 'next/font/google'; // 1. Added Inter
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import './globals.css' assert { type: 'css' };
+import './globals.css'; 
 
 const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
@@ -12,6 +12,12 @@ const playfairDisplay = Playfair_Display({
 const firaCode = Fira_Code({
   subsets: ['latin'],
   variable: '--font-fira-code',
+});
+
+// 2. Configure Inter (The "Human" Body Font)
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
 });
 
 export const metadata: Metadata = {
@@ -41,9 +47,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfairDisplay.variable} ${firaCode.variable}`}
+      // 3. Add inter.variable to the list so Tailwind can use it
+      className={`${playfairDisplay.variable} ${firaCode.variable} ${inter.variable}`}
     >
-      <body className="bg-navy text-slate-light">
+      {/* 4. Update default background to Phase 2 'Ceramic' and text to 'Ink' */}
+      <body className="bg-ceramic text-ink">
         <Navbar />
         <main>{children}</main>
         <Footer />
