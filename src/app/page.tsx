@@ -7,95 +7,108 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ContactForm from '../components/ContactForm';
 import FragilityAccordion from '../components/FragilityAccordion';
 
-export default function HomePage() {
-  const [showFuture, setShowFuture] = useState(false);
+  export default function HomePage() {
+  const [index, setIndex] = useState(0);
 
-  // Toggle the view every 4 seconds
+  // The 3 messages to loop through
+  const messages = [
+    {
+      text: "Wind extinguishes a candle...",
+      highlight: "candle",
+      color: "text-slate-300" 
+    },
+    {
+      text: "...and energizes Fire.",
+      highlight: "Fire.",
+      color: "text-teal" 
+    },
+    {
+      text: "Be the Fire and wish for the Wind",
+      highlight: "Wind",
+      color: "text-white"
+    }
+  ];
+
+  // Cycle through messages every 3.5 seconds
   useEffect(() => {
     const timer = setInterval(() => {
-      setShowFuture((prev) => !prev);
-    }, 4000);
+      setIndex((prev) => (prev + 1) % messages.length);
+    }, 3500);
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <div className="bg-ceramic min-h-screen text-charcoal font-sans selection:bg-gold/30">
-      
+    <>
       {/* ---------------------------------------------------------
-          SECTION 1: HERO (Text Locked Inside Video)
+          SECTION 1: HERO (Looping Narrative)
          ---------------------------------------------------------- */}
       <section className="relative h-[85vh] md:h-screen w-full overflow-hidden flex flex-col items-center justify-center bg-black py-20">
         
-        {/* BACKGROUND AMBIANCE (Glow) */}
+        {/* BACKGROUND AMBIANCE */}
         <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[50%] bg-teal/20 blur-[100px] rounded-full opacity-30" />
-           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[50%] bg-orange-500/10 blur-[100px] rounded-full opacity-30 mix-blend-screen" />
+           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[50%] bg-blue-500/10 blur-[100px] rounded-full opacity-30 mix-blend-screen" />
         </div>
 
-        {/* 1. TOP: HEADLINE (Outside Video) */}
-        <div className="relative z-30 w-full max-w-7xl mx-auto px-6 text-center mb-8">
-          <h1 className="font-serif text-4xl md:text-8xl font-bold text-white tracking-tight drop-shadow-2xl leading-tight">
-            "Be the <span className="italic text-White">Fire</span> that wishes for the<span className="italic text-White">Wind"</span>
-          </h1>
-        </div>
-
-        {/* 2. MIDDLE: VIDEO CONTAINER (Text Locked Inside) */}
-        {/* 'aspect-video' forces 16:9 ratio so text stays on top of video pixels */}
-        <div className="relative z-20 w-full max-w-6xl aspect-video shadow-2xl rounded-lg overflow-hidden border border-white/5 mx-0 md:mx-0">
+        {/* VIDEO CONTAINER */}
+        <div className="relative z-20 w-full max-w-6xl aspect-video shadow-2xl rounded-lg overflow-hidden border border-white/5 mx-0 md:mx-0 bg-black">
           
-          {/* The Video */}
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover scale-[1.60]" // slight scale to hide edges
-          >
-            <source src="/hero-antifragile.mp4" type="video/mp4" />
-          </video>
+          
           
           {/* Vignette Overlay */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_10%,rgba(0,0,0,0.6)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(0,0,0,0.6)_100%)]" />
 
-          {/* --- TEXT INSIDE VIDEO --- */}
-          
-          {/* Quote 1: Top Left (Desktop) / Top Center (Mobile) */}
-          <div className="absolute top-6 left-0 w-full md:w-auto md:top-12 md:left-12 flex justify-center md:justify-start px-4">
-            <p className="font-sans text-xs md:text-xl text-slate-200/90 font-light tracking-wide text-center md:text-left drop-shadow-lg bg-black/20 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10">
-              "Wind extinguishes a candle..."
-            </p>
+          {/* LOOPING TEXT OVERLAY */}
+          <div className="absolute inset-0 flex items-center justify-center p-6 text-center">
+            <AnimatePresence mode="wait">
+              <motion.h1 
+                key={index}
+                initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                exit={{ opacity: 0, y: -20, filter: 'blur(10px)' }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="font-serif text-4xl md:text-7xl font-bold text-white tracking-tight drop-shadow-2xl leading-tight max-w-4xl"
+              >
+                {messages[index].text.split(' ').map((word, i) => {
+                  // Clean the word of punctuation for matching
+                  const cleanWord = word.replace(/[^a-zA-Z]/g, '');
+                  const isHighlight = messages[index].highlight.includes(cleanWord);
+                  return (
+                    <span key={i} className={isHighlight ? `italic ${messages[index].color}` : ""}>
+                      {word}{' '}
+                    </span>
+                  );
+                })}
+              </motion.h1>
+            </AnimatePresence>
           </div>
 
-          {/* Quote 2: Bottom Right (Desktop) / Bottom Center (Mobile) */}
-          <div className="absolute bottom-6 right-0 w-full md:w-auto md:bottom-12 md:right-12 flex justify-center md:justify-end px-4">
-            <p className="font-sans text-sm md:text-2xl text-white font-bold tracking-wide text-center md:text-right drop-shadow-lg bg-black/20 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10">
-              "...and energizes <span className="text-white italic">Fire."</span>
-            </p>
-          </div>
         </div>
 
-        {/* --- NEW: ATTRIBUTION --- */}
-            {/* Added styling to make it distinct but subtle */}
-            <p className="font-mono text-lg text-slate-500 uppercase tracking-[0.25em] text-right mt-2 mb-2 drop-shadow-md">
+        {/* Author Attribution */}
+            <p className="font-mono text-lg text-slate-500 uppercase tracking-[0.25em] mt-8 opacity-60">
               - Nassim Taleb
             </p>
 
-        {/* 3. BOTTOM: BUTTONS (Outside Video) */}
-        <div className="relative z-30 w-full max-w-7xl mx-auto px-6 flex justify-center mt-10">
-          <div className="flex flex-col md:flex-row gap-4 justify-center items-center w-full md:w-auto">
-            <Link 
-              href="#manifesto"
-              className="w-full md:w-auto text-center px-8 py-3 md:px-10 md:py-4 backdrop-blur-md bg-white/5 border border-white/20 text-white font-sans font-medium rounded-full hover:bg-white/10 transition-all text-sm md:text-base"
-            >
-              Read Manifesto
-            </Link>
-            <Link 
-              href="#contact"
-              className="w-full md:w-auto text-center px-8 py-3 md:px-10 md:py-4 bg-white text-black font-sans font-bold rounded-full hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(255,255,255,0.15)] text-sm md:text-base"
-            >
-              Start Your Journey
-            </Link>
-          </div>
+        {/* BOTTOM BUTTONS (Outside Video) */}
+        <div className="relative z-30 w-full max-w-7xl mx-auto px-6 text-center mt-10">
+             <div className="flex flex-col md:flex-row gap-4 justify-center items-center w-full md:w-auto">
+                <Link 
+                  href="#contact"
+                  className="w-full md:w-auto text-center px-8 py-3 md:px-10 md:py-4 bg-white text-black font-sans font-bold rounded-full hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(255,255,255,0.15)] text-sm md:text-base"
+                >
+                  Start Your Journey
+                </Link>
+                
+                <Link 
+                  href="#manifesto"
+                  className="w-full md:w-auto text-center px-8 py-3 md:px-10 md:py-4 backdrop-blur-md bg-white/5 border border-white/20 text-white font-sans font-medium rounded-full hover:bg-white/10 transition-all text-sm md:text-base"
+                >
+                  Read Manifesto
+                </Link>
+            </div>
+            
+            
         </div>
 
       </section>
@@ -397,6 +410,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }
