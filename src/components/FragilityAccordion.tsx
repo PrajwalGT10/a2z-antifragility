@@ -39,7 +39,7 @@ export default function FragilityAccordion() {
           {/* Left: The Text */}
           <div>
             <p className="font-serif text-lg text-charcoal/80 leading-relaxed mb-8">
-              Almost all the forces we see around us—driven by Geopolitics, Markets, or Technology—seem to make our institutions more brittle. 
+              Almost all the forces we see around us—driven by Geopolitics, Markets, or Technology—seem to make our institutions more fragile. 
               <br /><br />
               There is an urgent need to understand, measure, and <span className="text-forest decoration-gold/40"><b>Fragile-proof</b></span> our communities.
             </p>
@@ -51,10 +51,10 @@ export default function FragilityAccordion() {
               The Framework
             </p>
             <h3 className="font-serif text-2xl text-forest mb-4">
-              Nassim Taleb's Antifragile
+              Antifragility
             </h3>
             <p className="font-serif text-base text-charcoal/70 leading-relaxed mb-6">
-              The bulk of this responsibility lies on the shoulders of millions working in CSOs. 
+              The bulk of the aforementioned responsibility lies on the shoulders of millions working in CSOs. 
               We partner with them to ensure donors get a better <span className="font-bold text-charcoal decoration-gold/60"> bang for their buck.</span>
             </p>
           </div>

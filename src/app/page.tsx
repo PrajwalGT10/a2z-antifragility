@@ -35,7 +35,7 @@ export default function HomePage() {
         {/* 1. TOP: HEADLINE (Outside Video) */}
         <div className="relative z-30 w-full max-w-7xl mx-auto px-6 text-center mb-8">
           <h1 className="font-serif text-4xl md:text-8xl font-bold text-white tracking-tight drop-shadow-2xl leading-tight">
-            Be the <span className="italic text-White">Fire</span>
+            "Be the <span className="italic text-White">Fire</span> that wishes for the<span className="italic text-White">Wind"</span>
           </h1>
         </div>
 
@@ -72,8 +72,13 @@ export default function HomePage() {
               "...and energizes <span className="text-white italic">Fire."</span>
             </p>
           </div>
-
         </div>
+
+        {/* --- NEW: ATTRIBUTION --- */}
+            {/* Added styling to make it distinct but subtle */}
+            <p className="font-mono text-lg text-slate-500 uppercase tracking-[0.25em] text-right mt-2 mb-2 drop-shadow-md">
+              - Nassim Taleb
+            </p>
 
         {/* 3. BOTTOM: BUTTONS (Outside Video) */}
         <div className="relative z-30 w-full max-w-7xl mx-auto px-6 flex justify-center mt-10">

@@ -9,7 +9,7 @@ export default function Footer() {
   useEffect(() => {
     setIsMounted(true);
     const quotes = [
-      'Solutions need to be simpler than the problems.',
+      'Powering Social Enterprises...Empowering Social Entrepreneurs',
     ];
     
     const randomIndex = Math.floor(Math.random() * quotes.length);
@@ -17,7 +17,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="w-full bg-charcoal border-t border-stone-800 py-16 mt-0">
+    <footer className="w-full bg-charcoal border-t border-stone-800 py-12 mt-0">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Heuristic Generator - Centered Version */}
