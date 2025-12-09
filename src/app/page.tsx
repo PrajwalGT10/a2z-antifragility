@@ -5,6 +5,7 @@ import { ArrowRight, Zap, Activity, Layers, Microscope, Rocket, Infinity, WifiOf
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ContactForm from '../components/ContactForm';
+import FragilityAccordion from '../components/FragilityAccordion';
 
 export default function HomePage() {
   const [showFuture, setShowFuture] = useState(false);
@@ -21,70 +22,77 @@ export default function HomePage() {
     <div className="bg-ceramic min-h-screen text-charcoal font-sans selection:bg-gold/30">
       
       {/* ---------------------------------------------------------
-          SECTION 1: HERO (Mobile Aspect Ratio Fixed)
-      ---------------------------------------------------------- */}
-      {/* CHANGE: Reduced mobile height from h-[80vh] to h-[55vh] to prevent zooming/cropping */}
-      <section className="relative h-[55vh] md:h-[85vh] w-full overflow-hidden flex items-center justify-center bg-charcoal">
+          SECTION 1: HERO (Text Locked Inside Video)
+         ---------------------------------------------------------- */}
+      <section className="relative h-[85vh] md:h-screen w-full overflow-hidden flex flex-col items-center justify-center bg-black py-20">
         
-        {/* Background Image Layer */}
-        <AnimatePresence mode="wait">
-          {showFuture ? (
-            <motion.div 
-              key="future-img"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.5 }}
-              className="absolute inset-0"
-            >
-              <div className="absolute inset-0 bg-forest/20 mix-blend-overlay z-10" />
-              {/* Added object-center to ensure focus */}
-              <img 
-                src="/hero-potential.jpg" 
-                alt="Classroom with Aural Devices" 
-                className="w-full h-full object-cover object-center" 
-              />
-            </motion.div>
-          ) : (
-            <motion.div 
-              key="reality-img"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.5 }}
-              className="absolute inset-0"
-            >
-              <div className="absolute inset-0 bg-stone/40 mix-blend-multiply z-10" />
-              {/* Added object-center to ensure focus */}
-              <img 
-                src="/hero-reality.jpg" 
-                alt="Traditional Rural Classroom"
-                className="w-full h-full object-cover object-center grayscale sepia-[0.3]"
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Text Overlay */}
-        <div className="relative z-20 text-center max-w-5xl px-4 md:px-6 mt-8 md:mt-0">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={showFuture ? "future-text" : "reality-text"}
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -20, opacity: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <span className={`px-3 py-1 md:px-4 md:py-2 text-[10px] md:text-xs font-mono uppercase tracking-[0.2em] mb-3 md:mb-6 inline-block rounded-full backdrop-blur-md border ${showFuture ? "bg-gold/90 text-white border-gold" : "bg-white/10 text-white border-white/20"}`}>
-                {showFuture ? "The Potential" : "The Reality"}
-              </span>
-              
-              <h1 className="text-3xl md:text-7xl font-serif text-white leading-tight mb-6 md:mb-8 drop-shadow-lg">
-                {showFuture ? <>Unlimited by <br className="md:hidden"/><span className="text-gold">Technology.</span></> : <>Limited by <br className="md:hidden"/><span className="text-white">Geography.</span></>}
-              </h1>
-            </motion.div>
-          </AnimatePresence>
+        {/* BACKGROUND AMBIANCE (Glow) */}
+        <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
+           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[50%] bg-teal/20 blur-[100px] rounded-full opacity-30" />
+           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[50%] bg-orange-500/10 blur-[100px] rounded-full opacity-30 mix-blend-screen" />
         </div>
+
+        {/* 1. TOP: HEADLINE (Outside Video) */}
+        <div className="relative z-30 w-full max-w-7xl mx-auto px-6 text-center mb-8">
+          <h1 className="font-serif text-4xl md:text-8xl font-bold text-white tracking-tight drop-shadow-2xl leading-tight">
+            Be the <span className="italic text-White">Fire</span>
+          </h1>
+        </div>
+
+        {/* 2. MIDDLE: VIDEO CONTAINER (Text Locked Inside) */}
+        {/* 'aspect-video' forces 16:9 ratio so text stays on top of video pixels */}
+        <div className="relative z-20 w-full max-w-6xl aspect-video shadow-2xl rounded-lg overflow-hidden border border-white/5 mx-0 md:mx-0">
+          
+          {/* The Video */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover scale-[1.60]" // slight scale to hide edges
+          >
+            <source src="/hero-antifragile.mp4" type="video/mp4" />
+          </video>
+          
+          {/* Vignette Overlay */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_10%,rgba(0,0,0,0.6)_100%)]" />
+
+          {/* --- TEXT INSIDE VIDEO --- */}
+          
+          {/* Quote 1: Top Left (Desktop) / Top Center (Mobile) */}
+          <div className="absolute top-6 left-0 w-full md:w-auto md:top-12 md:left-12 flex justify-center md:justify-start px-4">
+            <p className="font-sans text-xs md:text-xl text-slate-200/90 font-light tracking-wide text-center md:text-left drop-shadow-lg bg-black/20 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10">
+              "Wind extinguishes a candle..."
+            </p>
+          </div>
+
+          {/* Quote 2: Bottom Right (Desktop) / Bottom Center (Mobile) */}
+          <div className="absolute bottom-6 right-0 w-full md:w-auto md:bottom-12 md:right-12 flex justify-center md:justify-end px-4">
+            <p className="font-sans text-sm md:text-2xl text-white font-bold tracking-wide text-center md:text-right drop-shadow-lg bg-black/20 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10">
+              "...and energizes <span className="text-white italic">Fire."</span>
+            </p>
+          </div>
+
+        </div>
+
+        {/* 3. BOTTOM: BUTTONS (Outside Video) */}
+        <div className="relative z-30 w-full max-w-7xl mx-auto px-6 flex justify-center mt-10">
+          <div className="flex flex-col md:flex-row gap-4 justify-center items-center w-full md:w-auto">
+            <Link 
+              href="#manifesto"
+              className="w-full md:w-auto text-center px-8 py-3 md:px-10 md:py-4 backdrop-blur-md bg-white/5 border border-white/20 text-white font-sans font-medium rounded-full hover:bg-white/10 transition-all text-sm md:text-base"
+            >
+              Read Manifesto
+            </Link>
+            <Link 
+              href="#contact"
+              className="w-full md:w-auto text-center px-8 py-3 md:px-10 md:py-4 bg-white text-black font-sans font-bold rounded-full hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(255,255,255,0.15)] text-sm md:text-base"
+            >
+              Start Your Journey
+            </Link>
+          </div>
+        </div>
+
       </section>
 
       {/* ---------------------------------------------------------
@@ -92,12 +100,17 @@ export default function HomePage() {
       ---------------------------------------------------------- */}
       <section id="manifesto" className="py-32 px-6 max-w-4xl mx-auto text-center scroll-mt-20">
         <h3 className="font-serif text-3xl md:text-5xl text-charcoal mb-10 leading-relaxed">
-          "The world doesn&apos;t need more ideas. It needs the <span className="italic text-forest decoration-gold/40 underline decoration-2 underline-offset-4">good ideas that already exist</span>&mdash;to reach their full potential."
+          "I like to dream of things that never were and say - <span className="italic text-forest decoration-gold/40">Why not ?"</span>
+        </h3>
+        <h3 className="font-serif text-3xl md:text-5xl text-charcoal mb-10 leading-relaxed">
+          - GB Shaw
         </h3>
         <p className="font-mono text-stone text-xs uppercase tracking-[0.2em] border-t border-stone-200 pt-8 inline-block">
-          A2Z Foundation - Friends of Good Ideas.
+          Antifragility Foundation - Friends of Good Ideas.
         </p>
+        <FragilityAccordion />
       </section>
+      
 
       {/* ---------------------------------------------------------
           SECTION 3: THE GAP ANALYSIS
@@ -108,7 +121,7 @@ export default function HomePage() {
             <span className="text-gold font-mono text-xs uppercase tracking-widest mb-4 block">The Bottleneck</span>
             <h2 className="font-serif text-4xl md:text-5xl text-charcoal mb-6">Great work happens in silos.</h2>
             <p className="text-stone text-lg leading-relaxed mb-8">
-              Organizations like <strong>Children's Movement for Civic Awareness (CMCA)</strong> and <strong>Jalana Education Foundation (JEF)</strong> are doing the hard work on the ground. But even the most impactful work struggles with limited visibility, technology gaps, and scaling bottlenecks.
+              Most NGOs are doing the hard work on the ground. But even the most impactful work struggles with limited visibility, technology gaps, and scaling bottlenecks.
               <br/><br/>
               We build the <strong>Digital Spine</strong> that lets them stand taller.
             </p>
@@ -172,7 +185,7 @@ export default function HomePage() {
               <h4 className="font-serif text-2xl text-charcoal mb-4">Managed Services</h4>
               <p className="text-stone text-sm leading-relaxed mb-6">Lack internal resources? We provide outsourced Innovation & Learning services.</p>
               <ul className="text-sm text-stone-600 space-y-3 font-mono border-t border-slate-100 pt-6">
-                <li>Impact Evaluations</li><li>Innovation Sprints</li><li>Knowledge Management</li>
+                <li>Impact Evaluations</li><li>Innovation Sprints</li><li>Knowledge Management</li><li>Program Management</li>
               </ul>
             </div>
           </div>
@@ -202,7 +215,11 @@ export default function HomePage() {
                 The Teacher That Never Sleeps. <br/>
               </h2>
               <p className="text-stone-400 text-lg leading-relaxed mb-8">
-                Meet <strong>Aural</strong>. The first AI-driven, screen-free audio tutor designed specifically for last-mile learners. It proves that high-tech doesn't have to mean high-cost.
+                Meet <strong>Aural</strong>. The first AI-driven, screen-free audio tutor designed for last-mile learners. 
+              <br /><br />
+              We turn a serious challenge — <b>the lack of trained teachers </b> — into a scalable advantage.  
+              Aural shifts the educator's role from the <em>"Sage on the Stage"</em> to a <em>"Guide for the Ride,"</em> 
+              proving that high-tech doesn't have to mean high-cost.
               </p>
 
               <div className="space-y-6">
@@ -313,10 +330,6 @@ export default function HomePage() {
                     <li className="flex items-start gap-3">
                       <Landmark className="w-5 h-5 text-gold shrink-0" />
                       <span>Outcome-linked contracts with state education departments.</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-gold font-bold">✓</span> 
-                      <span><strong>Revenue:</strong> Per-school fees, blended with public budgets or impact bonds.</span>
                     </li>
                   </ul>
                 </div>
