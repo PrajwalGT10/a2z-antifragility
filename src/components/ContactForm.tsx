@@ -1,109 +1,122 @@
 'use client';
 
 import { useState } from 'react';
+import { Send, CheckCircle, RefreshCcw } from 'lucide-react';
 
 export default function ContactForm() {
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('submitting');
 
-    const formData = new FormData(e.currentTarget);
-    // Replace this with your actual Access Key from Web3Forms
-    formData.append("access_key", "YOUR_ACCESS_KEY_HERE"); 
+    // Simulate an API call (e.g., to Web3Forms or a custom backend)
+    setTimeout(() => {
+      setStatus('success');
+    }, 1500);
+  };
 
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData
-      });
-      const result = await response.json();
-      if (result.success) {
-        setStatus('success');
-      } else {
-        setStatus('idle');
-      }
-    } catch (error) {
-      setStatus('idle');
-    }
-  }
+  const handleReset = () => {
+    setStatus('idle');
+  };
 
   if (status === 'success') {
     return (
-      <div className="p-8 border border-gold/20 bg-gold/5 rounded-lg text-center">
-        <h3 className="font-serif text-2xl text-gold mb-2">Signal Received.</h3>
-        <p className="font-sans text-stone-600 text-sm">
-          We will process your input and get in touch shortly.
+      <div className="text-center py-12 animate-in fade-in zoom-in duration-500">
+        <div className="flex justify-center mb-6">
+          <CheckCircle className="w-16 h-16 text-forest" />
+        </div>
+        <h3 className="font-serif text-3xl text-charcoal mb-4">Signal Received.</h3>
+        <p className="text-stone mb-10 max-w-sm mx-auto">
+          Thank you for reaching out. A member of the A2Z Antifragility team will review your message and respond shortly.
         </p>
-        <button 
-          onClick={() => setStatus('idle')}
-          className="mt-6 text-xs font-mono text-forest underline hover:text-forest/80"
+        <button
+          onClick={handleReset}
+          className="inline-flex items-center gap-2 text-gold font-bold hover:text-charcoal transition-colors group"
         >
-          Send another message
+          <RefreshCcw className="w-4 h-4 group-hover:rotate-180 transition-transform duration-500" />
+          Submit another query
         </button>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8 text-left">
-      
-      {/* 1. Identity / Name */}
-      <div className="group">
-        <label htmlFor="name" className="block font-mono text-xs text-gold uppercase tracking-widest mb-3">
-          Identity / Name
-        </label>
-        <input
-          type="text"
-          id="name"
-          name="name" 
-          required
-          className="w-full bg-white border-2 border-stone-200 text-charcoal p-4 rounded-lg focus:border-gold focus:outline-none focus:ring-0 transition-colors font-sans text-lg placeholder:text-stone-300"
-          placeholder="Enter your name or organization"
-        />
+    <form onSubmit={handleSubmit} className="space-y-6 text-left">
+      <div className="grid md:grid-cols-2 gap-6">
+        {/* Identity / Name */}
+        <div className="group">
+          <label htmlFor="name" className="block font-mono text-[10px] text-gold uppercase tracking-widest mb-2">Identity / Name</label>
+          <input 
+            type="text" 
+            id="name" 
+            name="name" 
+            required 
+            className="w-full bg-white border border-stone-200 p-4 rounded-lg focus:border-gold outline-none transition-colors"
+            placeholder="Your name"
+          />
+        </div>
+
+        {/* Email */}
+        <div className="group">
+          <label htmlFor="email" className="block font-mono text-[10px] text-gold uppercase tracking-widest mb-2">Coordinates / Email</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            required 
+            className="w-full bg-white border border-stone-200 p-4 rounded-lg focus:border-gold outline-none transition-colors"
+            placeholder="email@example.com"
+          />
+        </div>
       </div>
 
-      {/* 2. Coordinates (Email) */}
+      {/* Persona Selection */}
       <div className="group">
-        <label htmlFor="email" className="block font-mono text-xs text-gold uppercase tracking-widest mb-3">
-          Coordinates (Email)
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          required
-          className="w-full bg-white border-2 border-stone-200 text-charcoal p-4 rounded-lg focus:border-gold focus:outline-none focus:ring-0 transition-colors font-sans text-lg placeholder:text-stone-300"
-          placeholder="name@organization.org"
-        />
+        <label htmlFor="role" className="block font-mono text-[10px] text-gold uppercase tracking-widest mb-2">I represent a...</label>
+        <select 
+          id="role" 
+          name="role" 
+          required 
+          className="w-full bg-white border border-stone-200 p-4 rounded-lg focus:border-gold outline-none font-sans appearance-none"
+        >
+          <option value="NGO">Non-Governmental Organization (NGO)</option>
+          <option value="CSO">Civil Society Organization (CSO)</option>
+          <option value="Volunteer">Individual / Volunteer</option>
+          <option value="Partner">Corporate / Funding Partner</option>
+        </select>
       </div>
 
-      {/* 3. Input / Inquiry */}
+      {/* Message Section */}
       <div className="group">
-        <label htmlFor="message" className="block font-mono text-xs text-gold uppercase tracking-widest mb-3">
-          Input / Inquiry
-        </label>
-        <textarea
-          id="message"
-          name="message"
+        <label htmlFor="message" className="block font-mono text-[10px] text-gold uppercase tracking-widest mb-2">Query / Message</label>
+        <textarea 
+          id="message" 
+          name="message" 
+          required 
           rows={5}
-          required
-          className="w-full bg-white border-2 border-stone-200 text-charcoal p-4 rounded-lg focus:border-gold focus:outline-none focus:ring-0 transition-colors font-sans text-lg placeholder:text-stone-300"
-          placeholder="Share your thoughts"
+          className="w-full bg-white border border-stone-200 p-4 rounded-lg focus:border-gold outline-none transition-colors resize-none"
+          placeholder="Describe how we can build resilience together..."
         />
       </div>
-
-      {/* Spam Prevention */}
-      <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
 
       {/* Submit Button */}
-      <button
-        type="submit"
+      <button 
+        type="submit" 
         disabled={status === 'submitting'}
-        className="w-full bg-gold text-gold font-bold py-5 rounded-lg hover:bg-charcoal transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-gold/20 text-lg tracking-wide"
+        className="w-full bg-gold text-charcoal font-bold py-5 rounded-lg hover:bg-charcoal hover:text-white transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-3 text-lg shadow-lg shadow-gold/10"
       >
-        {status === 'submitting' ? 'Transmitting...' : 'Transmit Signal'}
+        {status === 'submitting' ? (
+          <>
+            <div className="w-5 h-5 border-2 border-charcoal border-t-transparent rounded-full animate-spin" />
+            Transmitting...
+          </>
+        ) : (
+          <>
+            <Send className="w-5 h-5" />
+            Send your Message
+          </>
+        )}
       </button>
     </form>
   );

@@ -10,6 +10,9 @@ const nextConfig = {
     // your project has TypeScript errors.
     ignoreBuildErrors: true,
   },
+  images: {
+    unoptimized: true, // Disables the server-side optimization API
+  },
   output: 'export', // Optional: Ensures a static export if you want purely static files
 };
 
