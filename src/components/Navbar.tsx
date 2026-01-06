@@ -1,63 +1,67 @@
 'use client';
 
-import Link from 'next/link';
 import { useState } from 'react';
+import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { label: 'Education', href: '/education' },
-    { label: 'Water Management', href: '/water-management' },
-    { label: 'What is Antifragility?', href: '/antifragility' },
+    { name: 'Antifragility', href: '/antifragility' },
+    { name: 'Education', href: '/education' },
+    { name: 'Water', href: '/water' },
   ];
 
   return (
-    <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/95 border-b border-stone-200 shadow-sm transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo - Always leads Home */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <svg className="w-8 h-8 text-forest group-hover:text-gold transition duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-             <path d="M12 2L2 22h20L12 2zm0 4l6 12H6l6-12z" />
-          </svg>
-          <span className="font-serif text-lg font-bold text-charcoal tracking-wide">A2Z Antifragility</span>
+    /* h-20 (80px) is our fixed reference height */
+    <nav className="fixed top-0 w-full z-50 bg-ceramic/80 backdrop-blur-md border-b border-stone-100 h-20 flex items-center">
+      <div className="max-w-7xl mx-auto px-6 w-full flex items-center justify-between">
+        
+        {/* LOGO */}
+        <Link href="/" className="font-serif text-2xl text-charcoal tracking-tight flex items-center gap-2">
+          <span className="font-bold">A2Z</span>
+          <span className="text-stone-400 font-light">Antifragility</span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <ul className="hidden md:flex gap-8 items-center">
+        {/* DESKTOP NAV */}
+        <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <li key={link.href}>
-              <Link href={link.href} className="text-stone-600 hover:text-forest transition font-sans text-sm font-medium tracking-wide">
-                {link.label}
-              </Link>
-            </li>
-          ))}
-          <li>
-            <Link href="/#contact" className="px-5 py-2 bg-charcoal text-white text-sm font-bold rounded hover:bg-forest transition shadow-sm">
-              Partner With Us
+            <Link 
+              key={link.name} 
+              href={link.href} 
+              className="text-sm font-medium text-stone-600 hover:text-gold transition-colors"
+            >
+              {link.name}
             </Link>
-          </li>
-        </ul>
-        
-        {/* Mobile Toggle */}
-        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-charcoal">
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          ))}
+          <Link 
+            href="/antifragility#contact" 
+            className="px-5 py-2 bg-charcoal text-black text-sm font-bold rounded hover:bg-forest transition shadow-sm">
+            Partner With Us
+          </Link>
+        </div>
+
+        {/* MOBILE TOGGLE */}
+        <button className="md:hidden p-2 text-charcoal" onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? <X /> : <Menu />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* MOBILE MENU */}
       {isOpen && (
-        <div className="md:hidden bg-white border-b border-stone-200 absolute w-full left-0 top-full shadow-xl">
-          <ul className="flex flex-col">
-            {navLinks.map((link) => (
-              <li key={link.href} className="border-b border-stone-100 last:border-none">
-                <Link href={link.href} className="text-stone-700 hover:text-forest block px-6 py-4" onClick={() => setIsOpen(false)}>
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <div className="absolute top-20 left-0 w-full bg-white border-b border-stone-100 p-6 flex flex-col gap-4 animate-in fade-in slide-in-from-top-4">
+          {navLinks.map((link) => (
+            <Link key={link.name} href={link.href} onClick={() => setIsOpen(false)} className="text-lg font-serif text-charcoal">
+              {link.name}
+            </Link>
+          ))}
+          <Link 
+            href="/antifragility#contact" 
+            onClick={() => setIsOpen(false)}
+            className="w-full text-center py-4 bg-charcoal text-black font-bold rounded-lg">
+            Partner With Us
+          </Link>
         </div>
       )}
     </nav>

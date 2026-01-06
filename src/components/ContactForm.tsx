@@ -28,7 +28,7 @@ export default function ContactForm() {
         </div>
         <h3 className="font-serif text-3xl text-charcoal mb-4">Signal Received.</h3>
         <p className="text-stone mb-10 max-w-sm mx-auto">
-          Thank you for reaching out. A member of the A2Z Antifragility team will review your message and respond shortly.
+          Thank you for reaching out. A member of the A2Z team will review your message and respond shortly.
         </p>
         <button
           onClick={handleReset}
