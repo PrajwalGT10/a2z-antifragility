@@ -8,9 +8,9 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: 'Antifragility', href: '/antifragility' },
     { name: 'Education', href: '/education' },
     { name: 'Water', href: '/water' },
+    { name: 'Antifragility', href: '/antifragility' },
   ];
 
   return (
