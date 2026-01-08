@@ -118,10 +118,6 @@ export default function EducationPage() {
                       <span className="text-forest font-bold">✓</span> 
                       <span>Collect interaction data and listening outcomes.</span>
                     </li>
-                    <li className="flex items-start gap-3">
-                       <BarChart3 className="w-5 h-5 text-forest shrink-0" />
-                       <span><strong>Success Metrics:</strong> Usage &gt;3 sessions/wk.</span>
-                    </li>
                   </ul>
                 </div>
               </div>
