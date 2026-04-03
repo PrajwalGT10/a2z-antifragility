@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Education Systems | A2Z Foundation — Innovative Learning Solutions</title>
+    <meta name="description"
+        content="A2Z Foundation's Education Systems programme focuses on innovative learning solutions like the Aural learning device and the Learnability Gym to build lasting competencies.">
+    <meta name="keywords"
+        content="A2Z Foundation education, education systems India, Aural device, Learnability Gym, innovative learning, building competencies, school education NGO">
+    <link rel="canonical" href="https://www.a2zantifragility.org/education.html">
+    <meta property="og:title" content="Education Systems | A2Z Foundation">
+    <meta property="og:description"
+        content="Innovative learning solutions designed to build lasting competencies through structured training and assistive technology.">
+    <meta property="og:url" content="https://www.a2zantifragility.org/education.html">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ── Material Symbols ── */
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+
+        /* ── Page Layout ── */
+        body {
+            overflow-y: auto;
+            height: auto;
+            justify-content: flex-start;
+        }
+
+        .main-container {
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 100px 2rem 4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 3.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 100px 1rem 2rem;
+            }
+        }
+
+        /* ── Section Headers ── */
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-label .material-symbols-outlined {
+            font-size: 18px;
+            color: var(--accent-color);
+        }
+
+        .section-label span:last-child {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent-color);
+        }
+
+        /* ── Capability Cards Grid ── */
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .capability-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background-color: var(--bg-subtle);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .capability-card:hover {
+            background-color: var(--bg-color);
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 20px rgba(42, 123, 111, 0.10);
+            transform: translateY(-3px);
+        }
+
+        .capability-card .card-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .capability-card:hover .card-icon {
+            transform: scale(1.1);
+        }
+
+        .capability-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0;
+            line-height: 1.3;
+        }
+
+        /* ── Hover-to-reveal description ── */
+        .capability-card .card-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, opacity 0.3s ease, margin 0.3s ease;
+            margin-top: 0;
+        }
+
+        .capability-card:hover .card-desc {
+            max-height: 120px;
+            opacity: 1;
+            margin-top: 0.75rem;
+        }
+
+        /* ── Learn more indicator ── */
+        .capability-card .card-cta {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease 0.1s, opacity 0.3s ease 0.1s, margin 0.3s ease;
+            margin-top: 0;
+        }
+
+        .capability-card:hover .card-cta {
+            max-height: 30px;
+            opacity: 1;
+            margin-top: 1rem;
+        }
+
+        /* ── Vertical Definition Cards ── */
+        .verticals-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .vertical-card {
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent-color);
+            background-color: var(--bg-subtle);
+            border-radius: 0 8px 8px 0;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .vertical-card:nth-child(2),
+        .vertical-card:nth-child(3) {
+            border-left-color: var(--border-color);
+        }
+
+        .vertical-card:hover {
+            box-shadow: 0 2px 12px rgba(42, 123, 111, 0.08);
+        }
+
+        .vertical-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .vertical-card p {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+
+            .capabilities-grid,
+            .verticals-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .education-main {
+                padding: 140px 1rem 2rem;
+                gap: 1.5rem;
+            }
+
+            .section-heading {
+                font-size: 1.4rem;
+            }
+
+            .capability-card h3 {
+                font-size: 1rem;
+            }
+
+            .hover-desc {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Standard Institutional Header -->
+    <div id="navbar-placeholder"></div>
+
+    <main class="main-container main-container--medium header-offset">
+
+        <!-- ZONE 1: Institutional Capabilities -->
+        <section>
+            <div class="section-label">
+                <span class="material-symbols-outlined">verified_user</span>
+                <span>Our Capabilities</span>
+            </div>
+            <div class="capabilities-grid">
+                <!-- Card 1 -->
+                <a href="capability-product.html" class="capability-card">
+                    <span class="material-symbols-outlined card-icon">developer_board</span>
+                    <h4>Product Development</h4>
+                    <p class="card-desc">
+                        Building AI-enabled learning tools alongside partners, designed to thrive in diverse and
+                        evolving environments.
+                    </p>
+                    <span class="card-cta">Learn more →</span>
+                </a>
+                <!-- Card 2 -->
+                <a href="capability-it.html" class="capability-card">
+                    <span class="material-symbols-outlined card-icon">hub</span>
+                    <h4>IT Systems & Tech Enablement</h4>
+                    <p class="card-desc">
+                        Strengthening foundations through AI-powered operations, literacy training, and rapid multimedia
+                        prototyping.
+                    </p>
+                    <span class="card-cta">Learn more →</span>
+                </a>
+                <!-- Card 3 -->
+                <a href="capability-building.html" class="capability-card">
+                    <span class="material-symbols-outlined card-icon">fitness_center</span>
+                    <h4>Capacity Building</h4>
+                    <p class="card-desc">
+                        Structured behavioural training that builds lasting competencies — presence, systems thinking,
+                        and collaborative leadership — inside NGO teams.
+                    </p>
+                    <span class="card-cta">Learn more →</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- ZONE 2: Vertical Definition -->
+        <section>
+            <div class="section-label">
+                <span class="material-symbols-outlined">architecture</span>
+                <span>Our Systems View</span>
+            </div>
+            <div class="verticals-grid">
+                <div class="vertical-card">
+                    <h3>Education as Infrastructure</h3>
+                    <p>Embedded learning systems, designed to last as part of the community fabric.</p>
+                </div>
+                <div class="vertical-card">
+                    <h3>What Enables at Scale</h3>
+                    <p>Coherent governance, shared ownership, and technology built for real adoption.</p>
+                </div>
+                <div class="vertical-card">
+                    <h3>System Layer Operation</h3>
+                    <p>Working at the sensing, execution, and governance layers — alongside partners.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ZONE 3: Actions -->
+        <footer class="page-actions-footer">
+            <div class="actions-grid">
+                <a href="offerings.html" class="action-btn action-btn--primary">
+                    <span>View Education Offerings</span>
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+                <a href="index.html" class="action-btn action-btn--secondary">
+                    <span class="material-symbols-outlined">home</span>
+                    <span>Back to Home</span>
+                </a>
+            </div>
+        </footer>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p class="footer-copyright">&copy; 2026 A2Z Antifragility Foundation</p>
+            <div class="footer-pill">Section 8</div>
+        </div>
+    </footer>
+    <script src="scripts/navbar-loader.js"></script>
+</body>
+
+</html>

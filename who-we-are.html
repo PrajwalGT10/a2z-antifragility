@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Who We Are | A2Z Foundation Core Team & Advisors</title>
+    <meta name="description"
+        content="Meet the A2Z Foundation core team and advisors building resilient systems across engineering, digital infrastructure, field deployment, and institutional design.">
+    <meta name="keywords"
+        content="A2Z Foundation team, A2Z Core Team, A2Z Advisors, Madhav Prakash, Prajwal Thanjavur, Ranga Priyan, Ramana Tadepalli, Niranjan Rao, Sudhakar Varanasi, A2Z Antifragility Foundation, NGO India">
+    <link rel="canonical" href="https://www.a2zantifragility.org/who-we-are.html">
+    <meta property="og:title" content="Who We Are | A2Z Foundation Core Team & Advisors">
+    <meta property="og:description"
+        content="Meet the core team and advisors building resilient systems across engineering, digital infrastructure, field deployment, and institutional design.">
+    <meta property="og:url" content="https://www.a2zantifragility.org/who-we-are.html">
+    <meta property="og:type" content="website">
+    <script type="application/ld+json">
+    [
+      { "@context": "https://schema.org", "@type": "Person", "name": "Madhav Prakash", "memberOf": { "@type": "Organization", "name": "A2Z Foundation Core Team" }, "worksFor": { "@type": "NGO", "name": "A2Z Antifragility Foundation", "url": "https://www.a2zantifragility.org" } },
+      { "@context": "https://schema.org", "@type": "Person", "name": "Prajwal Thanjavur", "memberOf": { "@type": "Organization", "name": "A2Z Foundation Core Team" }, "worksFor": { "@type": "NGO", "name": "A2Z Antifragility Foundation", "url": "https://www.a2zantifragility.org" } },
+      { "@context": "https://schema.org", "@type": "Person", "name": "Ranga Priyan", "memberOf": { "@type": "Organization", "name": "A2Z Foundation Core Team" }, "worksFor": { "@type": "NGO", "name": "A2Z Antifragility Foundation", "url": "https://www.a2zantifragility.org" } },
+      { "@context": "https://schema.org", "@type": "Person", "name": "Ramana Tadepalli", "jobTitle": "Advisor", "worksFor": { "@type": "NGO", "name": "A2Z Antifragility Foundation", "url": "https://www.a2zantifragility.org" } },
+      { "@context": "https://schema.org", "@type": "Person", "name": "Niranjan Rao", "jobTitle": "Advisor", "worksFor": { "@type": "NGO", "name": "A2Z Antifragility Foundation", "url": "https://www.a2zantifragility.org" } },
+      { "@context": "https://schema.org", "@type": "Person", "name": "Dr. Sudhakar Varanasi", "jobTitle": "Advisor", "worksFor": { "@type": "NGO", "name": "A2Z Antifragility Foundation", "url": "https://www.a2zantifragility.org" } }
+    ]
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .header-offset {
+            margin-top: 0 !important;
+        }
+
+        .main-container {
+            padding-top: 90px;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                padding-top: 100px;
+            }
+        }
+
+        /* ── Material Symbols ── */
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+
+        /* ── Page Layout ── */
+        body {
+            overflow-y: auto;
+            height: auto;
+            justify-content: flex-start;
+        }
+
+
+        /* ── Section Headers ── */
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-label .material-symbols-outlined {
+            font-size: 18px;
+            color: var(--accent-color);
+        }
+
+        .section-label span:last-child {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent-color);
+        }
+
+        .page-intro {
+            max-width: 900px;
+        }
+
+        .page-intro h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0 0 1.5rem 0;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .page-intro p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .team-section-header {
+            margin-bottom: 2rem;
+        }
+
+        .team-section-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0 0 0.5rem 0;
+        }
+
+        .team-section-header p {
+            font-size: 1rem;
+            color: var(--text-tertiary);
+            margin: 0;
+        }
+
+        /* ── Team Grid ── */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .team-card {
+            background-color: var(--bg-subtle);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            background-color: var(--bg-color);
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 20px rgba(42, 123, 111, 0.08);
+            transform: translateY(-3px);
+        }
+
+        .team-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background-color: #E6DFD5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .team-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0 0 1rem 0;
+            letter-spacing: -0.01em;
+        }
+
+        .team-bio {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .team-focus {
+            margin-top: auto;
+        }
+
+        .team-focus-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .team-focus-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .team-focus-list li {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .team-focus-list li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* ── Advisor Specific ── */
+        .advisor-card {
+            border-style: dashed;
+        }
+
+        .advisor-card .team-content {
+            padding: 1.5rem;
+        }
+
+        .advisor-card .team-name {
+            font-size: 1.25rem;
+        }
+
+        .advisor-card .team-bio {
+            font-size: 0.9rem;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 1024px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .who-we-are-main {
+                padding: 120px 1.5rem 3rem;
+            }
+
+            .page-intro h1 {
+                font-size: 2.2rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <main class="main-container header-offset">
+        <!-- Intro Section -->
+        <section class="page-intro">
+            <div class="section-label">
+                <span class="material-symbols-outlined">group</span>
+                <span>Who We Are</span>
+            </div>
+            <h1>A team building resilient systems for learning, deployment, and long-term social impact.</h1>
+            <p>
+                A2Z brings together engineering, digital systems, field deployment, and institutional thinking to build
+                practical solutions for social change. Our core team drives execution across product, technology, and
+                real-world implementation, supported by advisors who bring strategic, governance, and public-systems
+                depth.
+            </p>
+        </section>
+
+        <!-- Core Team Section -->
+        <section class="team-section">
+            <div class="team-section-header">
+                <h2>Core Team</h2>
+                <p>The execution-focused team leading product, systems, and field-ready innovation.</p>
+            </div>
+            <div class="team-grid">
+                <!-- Member 1: Madhav Prakash -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="assets/img/team/Madhav.jpg" alt="Madhav Prakash">
+                    </div>
+                    <div class="team-content">
+                        <h3 class="team-name">Madhav Prakash</h3>
+                        <p class="team-bio">
+                            Madhav works at the intersection of engineering, human-centered design, and adaptive systems
+                            to create technologies that are usable, learnable, and field-ready. His work focuses on
+                            translating engineering principles into practical solutions that improve autonomy,
+                            accessibility, and real-world adoption.
+                        </p>
+                        <div class="team-focus">
+                            <h4 class="team-focus-title">Core Focus</h4>
+                            <ul class="team-focus-list">
+                                <li>Assistive and adaptive system architectures</li>
+                                <li>Human-centered engineering for field use</li>
+                                <li>Rapid prototyping and practical deployment</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Member 2: Prajwal Thanjavur -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="assets/img/team/Prajwal.JPG" alt="Prajwal Thanjavur">
+                    </div>
+                    <div class="team-content">
+                        <h3 class="team-name">Prajwal Thanjavur</h3>
+                        <p class="team-bio">
+                            Prajwal designs the digital and data infrastructure that supports learning, execution, and
+                            better decision-making. His work focuses on building technology systems that reduce
+                            friction, strengthen feedback, and enable scalable operations without adding unnecessary
+                            complexity.
+                        </p>
+                        <div class="team-focus">
+                            <h4 class="team-focus-title">Core Focus</h4>
+                            <ul class="team-focus-list">
+                                <li>Digital systems and data infrastructure</li>
+                                <li>Learning, feedback, and decision workflows</li>
+                                <li>AI-enabled operational simplicity</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Member 3: Ranga Priyan -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="assets/img/team/Ranga.jpg" alt="Ranga Priyan">
+                    </div>
+                    <div class="team-content">
+                        <h3 class="team-name">Ranga Priyan</h3>
+                        <p class="team-bio">
+                            Ranga specializes in translating advanced technology into reliable, deployable systems for
+                            real-world environments. His work bridges engineering, embedded systems, and field realities
+                            to create solutions that generate actionable insights and support better decisions on the
+                            ground.
+                        </p>
+                        <div class="team-focus">
+                            <h4 class="team-focus-title">Core Focus</h4>
+                            <ul class="team-focus-list">
+                                <li>Embedded systems, IoT, and field integration</li>
+                                <li>ML-enabled feedback and sensing systems</li>
+                                <li>Research-to-deployment translation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advisors Section -->
+        <section class="team-section">
+            <div class="team-section-header">
+                <h2>Advisors</h2>
+                <p>Strategic, institutional, and governance guidance supporting long-term execution.</p>
+            </div>
+            <div class="team-grid">
+                <!-- Advisor 1: Ramana Tadepalli -->
+                <div class="team-card advisor-card">
+                    <div class="team-content">
+                        <h3 class="team-name">Ramana Tadepalli</h3>
+                        <p class="team-bio">
+                            Ramana brings a blend of institutional systems thinking, governance design, and grassroots
+                            development understanding. His work focuses on connecting long-range strategy with grounded
+                            execution through policy alignment, learning architecture, and multi-stakeholder systems
+                            design.
+                        </p>
+                        <div class="team-focus">
+                            <h4 class="team-focus-title">Core Focus</h4>
+                            <ul class="team-focus-list">
+                                <li>Institutional systems and governance</li>
+                                <li>Systems thinking and policy alignment</li>
+                                <li>Learning architecture for execution</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advisor 2: Niranjan Rao -->
+                <div class="team-card advisor-card">
+                    <div class="team-content">
+                        <h3 class="team-name">Niranjan Rao</h3>
+                        <p class="team-bio">
+                            Niranjan brings execution rigor to large-scale program design and implementation. His focus
+                            is
+                            on converting strategy into scalable operating structures, improving coordination, and
+                            building governance systems that support measurable outcomes.
+                        </p>
+                        <div class="team-focus">
+                            <h4 class="team-focus-title">Core Focus</h4>
+                            <ul class="team-focus-list">
+                                <li>Program design and sector integration</li>
+                                <li>Execution governance and operating rhythms</li>
+                                <li>Scalable implementation structures</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advisor 3: Dr. Sudhakar Varanasi -->
+                <div class="team-card advisor-card">
+                    <div class="team-content">
+                        <h3 class="team-name">Dr. Sudhakar Varanasi</h3>
+                        <p class="team-bio">
+                            Dr. Sudhakar brings deep experience in the design and scaling of mission-critical public
+                            systems. His perspective strengthens A2Z’s ability to think across technology, governance,
+                            institutional platforms, and public-private models in complex operating environments.
+                        </p>
+                        <div class="team-focus">
+                            <h4 class="team-focus-title">Core Focus</h4>
+                            <ul class="team-focus-list">
+                                <li>Public systems and institutional platforms</li>
+                                <li>e-Governance and large-scale delivery</li>
+                                <li>Technology-policy-governance integration</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation Actions -->
+        <footer class="page-actions-footer">
+            <div class="actions-grid">
+                <a href="how-we-work.html" class="action-btn action-btn--primary">
+                    <span>How We Work</span>
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+                <a href="antifragility.html" class="action-btn action-btn--secondary">
+                    <span class="material-symbols-outlined">auto_graph</span>
+                    <span>Antifragility</span>
+                </a>
+            </div>
+        </footer>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p class="footer-copyright">&copy; 2026 A2Z Antifragility Foundation</p>
+            <div class="footer-pill">Section 8</div>
+        </div>
+    </footer>
+
+    <script src="scripts/navbar-loader.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Operating System | A2Z Foundation — A Repeatable Approach to Building Resilient Systems</title>
+    <meta name="description"
+        content="A2Z Foundation's 5-step operating system: A structured, field-informed approach to building resilient systems across education, water management, and digital infrastructure.">
+    <link rel="canonical" href="https://www.a2zantifragility.org/how-we-work.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .header-offset {
+            margin-top: 0 !important;
+        }
+
+        .main-container {
+            padding-top: 90px;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                padding-top: 100px;
+            }
+        }
+
+        body {
+            overflow-y: auto;
+            height: auto;
+            background-color: var(--bg-color);
+        }
+
+
+        .label-caps {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .process-title-group {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .process-title-group h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0.5rem 0 1rem;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .process-title-group .section-intro {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        /* ── Vertical Process Flow ── */
+        .process-steps-vertical {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* Central Vertical Line */
+        .process-steps-vertical::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 28px;
+            width: 1px;
+            /* Thinner line for more restrained feel */
+            background: var(--border-color);
+            z-index: 0;
+        }
+
+        .process-step-v {
+            display: flex;
+            gap: 2.5rem;
+            position: relative;
+            z-index: 1;
+            padding-bottom: 4.5rem;
+        }
+
+        .process-step-v:last-child {
+            padding-bottom: 0;
+        }
+
+        .step-node-v {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 0 6px var(--bg-color);
+        }
+
+        .step-node-v .material-symbols-outlined {
+            font-size: 1.4rem;
+            color: var(--text-tertiary);
+            transition: color 0.3s ease;
+        }
+
+        .process-step-v:hover .step-node-v {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 6px var(--bg-color), 0 4px 15px rgba(42, 123, 111, 0.15);
+        }
+
+        .process-step-v:hover .step-node-v .material-symbols-outlined {
+            color: #fff;
+        }
+
+        .step-content-v {
+            padding-top: 0.4rem;
+        }
+
+        .step-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .step-title-v {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.85rem;
+            letter-spacing: -0.01em;
+        }
+
+        .step-desc-v {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            .hww-main {
+                padding: 100px 1.5rem 4rem;
+            }
+
+            .process-title-group h1 {
+                font-size: 1.85rem;
+            }
+
+            .process-steps-vertical::before {
+                left: 20px;
+            }
+
+            .step-node-v {
+                width: 40px;
+                height: 40px;
+            }
+
+            .step-node-v .material-symbols-outlined {
+                font-size: 1.15rem;
+            }
+
+            .process-step-v {
+                gap: 1.5rem;
+                padding-bottom: 3.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <main class="main-container main-container--narrow header-offset">
+
+        <div class="process-title-group">
+            <div class="label-caps">
+                <span class="material-symbols-outlined">api</span>
+                Methodology
+            </div>
+            <h1>Our Operating System</h1>
+            <p class="section-intro">
+                Across all A2Z engagements, we apply a structured, field-informed discipline designed to
+                build resilient systems that can flourish in dynamic environments.
+            </p>
+        </div>
+
+        <section class="process-steps-vertical">
+
+            <!-- Step 1 -->
+            <div class="process-step-v">
+                <div class="step-node-v">
+                    <span class="material-symbols-outlined">search</span>
+                </div>
+                <div class="step-content-v">
+                    <div class="step-label">Phase 01</div>
+                    <h2 class="step-title-v">Diagnose</h2>
+                    <p class="step-desc-v">
+                        We begin with a systemic assessment of existing patterns and capability gaps.
+                        By understanding the ground reality first, we identify fragility and potential
+                        points of leverage before defining any intervention.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="process-step-v">
+                <div class="step-node-v">
+                    <span class="material-symbols-outlined">architecture</span>
+                </div>
+                <div class="step-content-v">
+                    <div class="step-label">Phase 02</div>
+                    <h2 class="step-title-v">Design</h2>
+                    <p class="step-desc-v">
+                        Collaborating closely with stakeholders, we design adaptive architectures
+                        tailored to context. Whether it is a learning system, a digital workflow, or
+                        infrastructure, the design must be culturally aligned and operationally robust.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="process-step-v">
+                <div class="step-node-v">
+                    <span class="material-symbols-outlined">rocket_launch</span>
+                </div>
+                <div class="step-content-v">
+                    <div class="step-label">Phase 03</div>
+                    <h2 class="step-title-v">Implement</h2>
+                    <p class="step-desc-v">
+                        Execution happens in the field. We work alongside local teams to deploy
+                        and integrate solutions—integrating technology, operational protocols,
+                        or new systems into the daily rhythm of the environment.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="process-step-v">
+                <div class="step-node-v">
+                    <span class="material-symbols-outlined">switch_access_shortcut</span>
+                </div>
+                <div class="step-content-v">
+                    <div class="step-label">Phase 04</div>
+                    <h2 class="step-title-v">Transfer</h2>
+                    <p class="step-desc-v">
+                        Our goal is capability seeding, not dependency. We deliberately transfer
+                        skills and ownership to internal champions, ensuring that systems continue
+                        to thrive and evolve after our direct engagement concludes.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="process-step-v">
+                <div class="step-node-v">
+                    <span class="material-symbols-outlined">cycle</span>
+                </div>
+                <div class="step-content-v">
+                    <div class="step-label">Phase 05</div>
+                    <h2 class="step-title-v">Iterate</h2>
+                    <p class="step-desc-v">
+                        Resilience requires continuous adaptation. We establish reflection rituals
+                        and feedback loops to audit decisions and refine outcomes, embedding
+                        a culture of learning and permanent improvement.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p class="footer-copyright">&copy; 2026 A2Z Antifragility Foundation</p>
+            <div class="footer-pill">Section 8</div>
+        </div>
+    </footer>
+
+    <script src="scripts/navbar-loader.js"></script>
+</body>
+
+</html>

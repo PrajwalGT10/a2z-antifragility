@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Antifragility | A2Z Foundation — Building Systems That Grow Stronger Under Stress</title>
+    <meta name="description"
+        content="A2Z Foundation applies antifragility principles — Optionality, Via Negativa, the Lindy Effect — to design Education, Water, and Organisational systems that thrive under uncertainty in India.">
+    <meta name="keywords"
+        content="antifragility India, antifragility NGO, Nassim Taleb antifragility, A2Z Antifragility Foundation, fragile robust antifragile, systems thinking India">
+    <link rel="canonical" href="https://www.a2zantifragility.org/antifragility.html">
+    <meta property="og:title" content="Antifragility | A2Z Foundation">
+    <meta property="og:description"
+        content="Systems designed to thrive under stress — the core philosophy of A2Z Foundation's work across India.">
+    <meta property="og:url" content="https://www.a2zantifragility.org/antifragility.html">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .header-offset {
+            margin-top: 0 !important;
+        }
+
+        .main-container {
+            padding-top: 70px;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                padding-top: 100px;
+            }
+            .breadcrumb-nav {
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* ── Detail Header (Refined for Banyan Wireframe) ── */
+        .detail-header-custom {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-title-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            text-align: center;
+        }
+
+        .detail-title-group .material-symbols-outlined {
+            font-size: 3rem;
+            color: var(--accent-color);
+        }
+
+        .detail-title-group h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+            line-height: 1.1;
+        }
+
+        .detail-nav-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .nav-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .nav-button:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(42, 123, 111, 0.1);
+        }
+
+        /* ── Structural Splits ── */
+        .detail-top-split {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 3rem;
+            align-items: start;
+            margin-bottom: 3rem;
+        }
+
+        .detail-bottom-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-bottom: 3rem;
+        }
+
+        .executive-summary {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .label-caps {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .executive-summary h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .executive-summary .story-text {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .executive-summary .sub-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        /* ── Image Slideshow (Visual Container) ── */
+        .slideshow-container {
+            width: 100% !important;
+            aspect-ratio: 1/1 !important;
+            height: auto !important;
+            background-color: var(--bg-subtle);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .slideshow-container {
+                aspect-ratio: 1/1 !important;
+                max-width: 280px;
+                margin: 0 auto;
+            }
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            object-fit: contain;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        /* ── Feature Components ── */
+        .detail-sidebar h3,
+        .detail-section h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .detail-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sidebar-item {
+            display: flex;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            background: var(--bg-subtle);
+            padding: 1.25rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .detail-caps-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .detail-cap-card {
+            padding: 1.5rem;
+            background-color: var(--bg-subtle);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+        }
+
+        @media (max-width: 900px) {
+
+            .detail-top-split,
+            .detail-bottom-split {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+
+
+        @media (max-width: 768px) {
+            .detail-header-custom {
+                align-items: center;
+                text-align: center;
+            }
+
+            .detail-title-group {
+                align-items: center;
+                text-align: center;
+            }
+
+            .detail-title-group h1 {
+                font-size: 1.6rem;
+            }
+
+            .executive-summary {
+                align-items: center !important;
+                text-align: center !important;
+                width: 100% !important;
+            }
+
+            .executive-summary h2,
+            .executive-summary p,
+            .executive-summary .story-text,
+            .executive-summary .sub-text {
+                text-align: center !important;
+            }
+
+            .detail-footer {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+            }
+
+            .footer-button {
+                width: 100%;
+                justify-content: center;
+                padding: 0.8rem 1.5rem;
+            }
+
+            .sidebar-item,
+            .detail-cap-card {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .detail-title-group h1 {
+                font-size: 1.4rem;
+            }
+            .main-container {
+                padding-top: 110px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <main class="main-container main-container--medium header-offset">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumb-nav">
+            <a href="index.html" class="breadcrumb-link">Home</a>
+            <span class="material-symbols-outlined breadcrumb-separator">chevron_right</span>
+            <span class="breadcrumb-current">Antifragility</span>
+        </nav>
+
+        <!-- ── Detail Header ── -->
+        <div class="detail-header-custom">
+            <div class="detail-title-group">
+                <span class="material-symbols-outlined">trending_up</span>
+                <h1>Antifragility</h1>
+            </div>
+
+        </div>
+
+        <!-- Section 1: Beyond Resilience -->
+        <div class="detail-top-split">
+            <div class="slideshow-container">
+                <img src="assets/img/antifragility_visual_1.png" alt="Antifragility: The Banyan Tree & Digital Roots"
+                    class="slide active">
+            </div>
+            <div class="executive-summary">
+                <div class="label-caps">Executive Summary</div>
+                <h2>Beyond Resilience: Saksham</h2>
+                <p class="story-text">
+                    In the villages of India, the Banyan Tree is the ultimate model of survival. It doesn't just resist
+                    the storm; it grows new trunks from its branches to anchor itself deeper.
+                </p>
+                <p class="sub-text">
+                    This is <strong>Saksham</strong> — the shift from mere resilience (survival) to true antifragility
+                    (growth through challenge). Our approach to system design mirrors the Banyan: we aggregate
+                    technology and community wisdom to create "Digital Roots" that turn shocks into new avenues for
+                    strength.
+                </p>
+            </div>
+        </div>
+
+        <hr class="divider" style="border: none; border-top: 1px solid var(--border-color); margin: 3rem 0;">
+
+        <!-- Section 2: The Triad & Heuristics -->
+        <div class="detail-bottom-split">
+            <div class="detail-sidebar">
+                <h3>The Triad</h3>
+                <div class="sidebar-item">
+                    <span class="material-symbols-outlined" style="color: #d9534f; font-size: 2rem;">heart_broken</span>
+                    <div>
+                        <strong style="display: block; margin-bottom: 0.25rem;">Fragile</strong>
+                        <span style="font-size: 0.85rem; color: var(--text-secondary);">Sensitive to change. Mistakes
+                            can impact centralized rigidity. (e.g., Debt, Centralisation).</span>
+                    </div>
+                </div>
+                <div class="sidebar-item">
+                    <span class="material-symbols-outlined"
+                        style="color: var(--accent-color); font-size: 2rem;">shield</span>
+                    <div>
+                        <strong style="display: block; margin-bottom: 0.25rem;">Robust</strong>
+                        <span style="font-size: 0.85rem; color: var(--text-secondary);">Indifferent to uncertainty. It
+                            stays the same — until it doesn't. (e.g., The Phoenix).</span>
+                    </div>
+                </div>
+                <div class="sidebar-item">
+                    <span class="material-symbols-outlined" style="color: #5cb85c; font-size: 2rem;">account_tree</span>
+                    <div>
+                        <strong style="display: block; margin-bottom: 0.25rem;">Antifragile</strong>
+                        <span style="font-size: 0.85rem; color: var(--text-secondary);">Flourishes in dynamic
+                            conditions. It evolves and gains strength through varied experiences. (e.g., Evolution, The
+                            Banyan).</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <h2>Practical Heuristics</h2>
+                <div class="detail-caps-grid">
+                    <div class="detail-cap-card">
+                        <span class="material-symbols-outlined"
+                            style="color: var(--accent-color); margin-bottom: 0.75rem;">alt_route</span>
+                        <h3>Optionality</h3>
+                        <p>Building a portfolio of time-tested community practices and open-source tech. We prefer being
+                            ready for any future over pretending we can predict one.</p>
+                    </div>
+                    <div class="detail-cap-card">
+                        <span class="material-symbols-outlined"
+                            style="color: var(--accent-color); margin-bottom: 0.75rem;">remove_circle</span>
+                        <h3>Via Negativa</h3>
+                        <p>Excellence reached through subtraction. Often, the most powerful community intervention is
+                            simplifying complex operational layers to empower community autonomy.</p>
+                    </div>
+                    <div class="detail-cap-card">
+                        <span class="material-symbols-outlined"
+                            style="color: var(--accent-color); margin-bottom: 0.75rem;">history</span>
+                        <h3>The Lindy Effect</h3>
+                        <p>The survival of an idea is its best credential. We marry ancient collective wisdom with
+                            modern tech, trusting what has already stood the test of time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- References & Intellectual Sources -->
+        <div
+            style="margin-top: 4rem; padding: 1.5rem; background: var(--bg-subtle); border-radius: 12px; border: 1px solid var(--border-color);">
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                <strong>Intellectual Attribution:</strong> The core concepts of Antifragility, the Triad (Fragile,
+                Robust, Antifragile), and the Lindy Effect presented on this page are derived from the foundational work
+                of <strong>Nassim Nicholas Taleb</strong> in his book <em>"Antifragility: Systems That Flourish in
+                    Dynamic Conditions"</em>. We apply these principles transformatively within the context of Indian
+                social systems and digital infrastructure.
+            </p>
+        </div>
+
+        <!-- Footer Navigation -->
+        <footer class="page-actions-footer">
+            <div class="actions-grid">
+                <a href="index.html" class="action-btn action-btn--secondary">
+                    <span class="material-symbols-outlined">home</span>
+                    Back to Home
+                </a>
+                <a href="education.html" class="action-btn action-btn--primary">
+                    <span class="material-symbols-outlined">school</span>
+                    View Education
+                </a>
+            </div>
+        </footer>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p class="footer-copyright">&copy; 2026 A2Z Antifragility Foundation</p>
+            <div class="footer-pill">Section 8</div>
+        </div>
+    </footer>
+    <script src="scripts/navbar-loader.js"></script>
+</body>
+
+</html>

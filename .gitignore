@@ -1,0 +1,56 @@
+# AI & Development Folders
+.agent/
+.gemini/
+.gsd/
+
+# Internal Documents & Raw Assets
+*.docx
+*.pdf
+Logo.docx
+StartupBros -antifragility.pdf
+WELL_LABS_Learnability_Gym_Concept_Note.docx
+
+# Content Drafts & Structural Folders
+Education/
+"Home Page/"
+Offerings/
+"Who we are/"
+adapters/
+docs/
+
+# Development Scripts (Python, Bash, PowerShell)
+*.py
+scripts/*.ps1
+scripts/*.sh
+update_headers.py
+run_server.py
+extract_docx.py
+update_logo.py
+
+# Documentation & Guidelines
+*.md
+!README.md
+copyright_guidelines.md
+PROJECT_RULES.md
+GSD-STYLE.md
+A2Z – Core Team Portfolio.md
+How We Work.md
+
+# OS & IDE Files
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Temporary / Unnecessary Assets
+image_024c1.png
+model_capabilities.yaml
+Content_IT
+
+# Build output — Netlify generates this during CI
+/assessment/
+/assessment-app/dist/
+/assessment-app/node_modules/
+/assessment-app/.env
+/assessment-app/test-results/
+/assessment-app/playwright-report/
+/assessment-app/blob-report/
