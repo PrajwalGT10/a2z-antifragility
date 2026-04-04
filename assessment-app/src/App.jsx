@@ -60,6 +60,13 @@ function App() {
     localStorage.removeItem(STORAGE_KEY);
   };
 
+  const handleReset = () => {
+    if (confirm("Are you sure you want to reset the assessment? All current progress will be lost.")) {
+      localStorage.removeItem(STORAGE_KEY);
+      window.location.reload();
+    }
+  };
+
   const renderStep = () => {
     if (step === 0) {
       return (
@@ -148,12 +155,20 @@ function App() {
         <>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
             <div style={{ fontWeight: 'bold', fontSize: '1.25rem' }}>Learnability Gym Assessment</div>
-            <button 
-              onClick={handleManualSave}
-              className="btn btn-secondary" 
-              style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}>
-              <Save size={14} /> Save & Exit
-            </button>
+            <div style={{ display: 'flex', gap: '0.5rem' }}>
+              <button 
+                onClick={handleReset}
+                className="btn btn-secondary" 
+                style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem', color: 'var(--danger)', borderColor: 'var(--danger)' }}>
+                Reset
+              </button>
+              <button 
+                onClick={handleManualSave}
+                className="btn btn-secondary" 
+                style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}>
+                <Save size={14} /> Save & Exit
+              </button>
+            </div>
           </div>
           <div className="progress-bar">
             <div className="progress-fill" style={{ width: `${progressPercentage}%` }}></div>

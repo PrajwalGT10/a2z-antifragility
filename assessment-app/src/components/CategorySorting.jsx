@@ -27,8 +27,9 @@ export default function CategorySorting({ categories, ranking, onComplete }) {
       ...results.medium,
       ...results.low
     ];
-    setPool(categories.filter(c => !alreadyRanked.includes(c)));
-  }, [categories, phase]);
+    const newPool = categories.filter(c => !alreadyRanked.includes(c));
+    setPool(newPool);
+  }, [categories, phase, results]);
 
   const toggleSelection = (category) => {
     if (selections.includes(category)) {
@@ -101,7 +102,7 @@ export default function CategorySorting({ categories, ranking, onComplete }) {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
         <div>
           <h2 className="title" style={{ color: config.color }}>{config.title}</h2>
-          <p className="subtitle">{config.desc}</p>
+          <p className="subtitle">{config.desc} ({pool.length} total options)</p>
         </div>
         <div style={{ background: config.bg, color: config.color, padding: '0.5rem 1rem', borderRadius: '999px', fontWeight: 'bold' }}>
           {leftCount} remaining
