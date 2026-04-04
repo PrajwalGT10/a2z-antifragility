@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check } from 'lucide-react';
+import Toast from './Toast';
 
 export default function CategorySorting({ categories, ranking, onComplete }) {
   const [phase, setPhase] = useState(0); // 0 = Very High, 1 = High, 2 = Medium
 
   // Internal State
   const [pool, setPool] = useState([]);
-  const [unseen, setUnseen] = useState([]);
   const [selections, setSelections] = useState([]);
+  const [showToast, setShowToast] = useState(false);
 
   // Result bins
   const [results, setResults] = useState({
@@ -19,38 +20,41 @@ export default function CategorySorting({ categories, ranking, onComplete }) {
   });
 
   useEffect(() => {
-    // initialize on mount
-    setPool(categories.slice(0, 8));
-    setUnseen(categories.slice(8));
-  }, [categories]);
+    // Show all available categories for the current phase from the start
+    const alreadyRanked = [
+      ...results.veryHigh,
+      ...results.high,
+      ...results.medium,
+      ...results.low
+    ];
+    setPool(categories.filter(c => !alreadyRanked.includes(c)));
+  }, [categories, phase]);
 
   const toggleSelection = (category) => {
     if (selections.includes(category)) {
       setSelections(selections.filter(c => c !== category));
+      setShowToast(false);
     } else {
       if (selections.length < 5) {
-        setSelections([...selections, category]);
+        const newSelections = [...selections, category];
+        setSelections(newSelections);
+        if (newSelections.length === 5) {
+          setShowToast(true);
+        }
       }
     }
   };
 
   const handleNext = () => {
-    if (selections.length !== 5) return;
+    if (selections.length < 1 || selections.length > 5) return;
+    setShowToast(false);
 
     if (phase === 0) {
       setResults({ ...results, veryHigh: selections });
-      const unselected = pool.filter(c => !selections.includes(c)); // 3 left
-      const newPool = [...unselected, ...unseen.slice(0, 5)];
-      setPool(newPool);
-      setUnseen(unseen.slice(5));
       setSelections([]);
       setPhase(1);
     } else if (phase === 1) {
       setResults({ ...results, high: selections });
-      const unselected = pool.filter(c => !selections.includes(c)); // 3 left
-      const newPool = [...unselected, ...unseen.slice(0, 5)];
-      setPool(newPool);
-      setUnseen(unseen.slice(5)); // now empty
       setSelections([]);
       setPhase(2);
     } else if (phase === 2) {
@@ -69,19 +73,19 @@ export default function CategorySorting({ categories, ranking, onComplete }) {
     switch(phase) {
       case 0: return {
         title: "Very High Priority", 
-        desc: "Please select the 5 MOST IMPORTANT categories from the list below.",
+        desc: "Please select 1 to 5 MOST IMPORTANT categories from the list below.",
         color: 'var(--primary)',
         bg: 'rgba(79, 70, 229, 0.1)'
       };
       case 1: return {
         title: "High Priority", 
-        desc: "From the remaining options and some new ones, select 5 HIGHLY IMPORTANT categories.",
+        desc: "From the remaining options, select 1 to 5 HIGHLY IMPORTANT categories.",
         color: '#8B5CF6',
         bg: 'rgba(139, 92, 246, 0.1)'
       };
       case 2: return {
         title: "Medium Priority", 
-        desc: "Finally, select the 5 MODERATELY IMPORTANT categories.",
+        desc: "Finally, select 1 to 5 MODERATELY IMPORTANT categories.",
         color: '#F59E0B',
         bg: 'rgba(245, 158, 11, 0.1)'
       };
@@ -139,11 +143,17 @@ export default function CategorySorting({ categories, ranking, onComplete }) {
         <button 
           className="btn" 
           onClick={handleNext} 
-          disabled={selections.length !== 5}
+          disabled={selections.length === 0}
         >
           Confirm & Continue
         </button>
       </div>
+
+      <Toast 
+        show={showToast} 
+        message="Click Confirm and Continue or reselect your choices" 
+        onClear={() => setShowToast(false)} 
+      />
     </div>
   );
 }
