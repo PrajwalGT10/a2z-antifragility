@@ -10,4 +10,4 @@
 [build.environment]
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
   NETLIFY_SKIP_NEXTJS_PLUGIN = "true"
-  VITE_GOOGLE_SHEET_URL = "YOUR_APPS_SCRIPT_URL_HERE"
+  VITE_GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbywU1hsD3wcQUafXFSgZJzUB2d2uNxdWkljcUxAkw3IKBd4NfykC8fauRQzB8mrRY7Vfg/exec"

@@ -8,14 +8,14 @@ export default function Summary({ userDetails, categoryRanking, behaviorRanking,
   const [submissionStatus, setSubmissionStatus] = useState('idle'); // idle, submitting, success, error
 
   useEffect(() => {
-    if(onClearState) onClearState();
+    if (onClearState) onClearState();
     submitToGoogleSheets();
   }, []);
 
 
   const getPayloadString = () => {
     const timestampToUse = new Date().toISOString();
-    
+
     // Flat mapping array strictly matching the 63 column headers
     const flatDataArray = [
       timestampToUse,
@@ -65,8 +65,20 @@ export default function Summary({ userDetails, categoryRanking, behaviorRanking,
         headers: { "Content-Type": "text/plain" },
         body: getPayloadString()
       });
-      console.log('Sheet upload result:', await res.text());
-      setSubmissionStatus('success');
+
+      const resText = await res.text();
+      console.log('Sheet upload result:', resText);
+
+      if (res.ok) {
+        setSubmissionStatus('success');
+      } else {
+        console.error(`Google Sheets error (${res.status}):`, resText);
+        setSubmissionStatus('error');
+        // Show specific alert for 403 to help user diagnose
+        if (res.status === 403) {
+          alert("Permission Denied (403): Please ensure your Google Apps Script is deployed to 'Anyone'.");
+        }
+      }
     } catch (e) {
       console.error("Failed to submit to Google Sheets:", e);
       setSubmissionStatus('error');
@@ -83,21 +95,36 @@ export default function Summary({ userDetails, categoryRanking, behaviorRanking,
         <CheckCircle size={48} color="var(--success)" style={{ margin: '0 auto 1rem auto' }} />
         <h2 className="title">Assessment Complete!</h2>
         <p className="subtitle" style={{ marginBottom: '1rem' }}>Thank you, {userDetails.firstName}. Your behavioral assessment has been recorded.</p>
-        
+
         {submissionStatus === 'error' && (
-          <p style={{ color: 'var(--danger)', fontSize: '0.9rem', marginBottom: '1.5rem' }}>
-            Failed to sync to Google Sheets.
+          <div style={{ marginTop: '1rem' }}>
+            <p style={{ color: 'var(--danger)', fontSize: '0.9rem', marginBottom: '1rem' }}>
+              Failed to sync to Google Sheets. This might be due to script permissions.
+            </p>
+            <button
+              onClick={submitToGoogleSheets}
+              className="btn btn-secondary"
+              style={{ fontSize: '0.8rem', padding: '0.5rem 1rem' }}
+            >
+              Retry Sync
+            </button>
+          </div>
+        )}
+
+        {submissionStatus === 'submitting' && (
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
+            Saving the Response
           </p>
         )}
 
         {submissionStatus === 'success' && (
-          <p style={{ color: 'var(--success)', fontWeight: 'bold' }}>✓ Synced with Google Sheets</p>
+          <p style={{ color: 'var(--success)', fontWeight: 'bold' }}>Response Saved</p>
         )}
       </div>
 
       <div className="summary-section">
         <h3 className="summary-title">Top Priorities Overview</h3>
-        
+
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '2rem' }}>
           <div>
             <h4 style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}>Top 5 Categories (Very High)</h4>
